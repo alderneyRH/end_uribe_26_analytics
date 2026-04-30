@@ -1,11 +1,16 @@
-import numpy as np
+"""
+simuladorVentas.py
+------------------
+Módulo de simulación de ventas para "Mis Creaciones".
+Incluye inyección intencional de errores de calidad de datos.
+Se importa desde main.py usando: from simuladorVentas import generar_ventas
+"""
+
+import random
 from datetime import datetime, timedelta
- 
-# ── SEMILLA ────────────────────────────────────────────────────────────────
-np.random.seed(42)
- 
+
 # ── LISTAS BASE ────────────────────────────────────────────────────────────
- 
+
 PRODUCTOS = [
     {"nombre": "Vestido de ceremonia",  "precio": 215000, "descuento": False},
     {"nombre": "Traje elegante niño",   "precio": 189900, "descuento": True },
@@ -24,9 +29,9 @@ PRODUCTOS = [
     {"nombre": "Cinturón formal",       "precio":  45000, "descuento": False},
     {"nombre": "Conjunto bautizo niño", "precio": 160000, "descuento": True },
 ]
- 
+
 TALLAS = ["XS", "S", "M", "L", "XL", "XXXL"]
- 
+
 ASESORES = [
     "Laura Gómez",
     "Carlos Mesa",
@@ -35,46 +40,78 @@ ASESORES = [
     "Sofía Vélez",
     "Miguel Torres",
 ]
- 
-# ── FUNCIONES ──────────────────────────────────────────────────────────────
- 
-def simular_fecha(inicio="2025-01-01", fin="2025-03-31") -> str:
-    """Retorna una fecha aleatoria entre inicio y fin."""
-    fecha_inicio = datetime.strptime(inicio, "%Y-%m-%d")
-    fecha_fin    = datetime.strptime(fin,    "%Y-%m-%d")
-    dias_rango   = (fecha_fin - fecha_inicio).days
-    fecha        = fecha_inicio + timedelta(days=int(np.random.randint(0, dias_rango)))
-    return fecha.strftime("%Y-%m-%d")
- 
- 
-def generar_ventas(n: int) -> list:
+
+# ── FUNCIÓN PRINCIPAL ──────────────────────────────────────────────────────
+
+def generar_ventas(numeroVentas: int) -> list:
     """
-    Genera n ventas simuladas.
-    Retorna una lista de diccionarios lista para convertir a DataFrame.
- 
-    Cada venta contiene:
-      id_venta, producto, precio_unitario, descuento, talla, cantidad, vendedor, fecha, total
+    Genera numeroVentas ventas simuladas con errores intencionales.
+
+    Errores inyectados:
+      < 0.15 → espacios extra en producto
+      < 0.30 → vendedor en mayúsculas
+      < 0.40 → talla inválida ("medio")
+      < 0.50 → cantidad inválida (0, -1 o None)
+      < 0.60 → precio_unitario None
+      < 0.70 → fecha en formato incorrecto (dd/mm/YYYY)
+      < 0.80 → total con valor basura
+      < 0.90 → producto en minúsculas
+      duplicados → 10% de las ventas se duplican al final
     """
     ventas = []
- 
-    for i in range(1, n + 1):
-        producto  = PRODUCTOS[np.random.randint(0, len(PRODUCTOS))]
-        talla     = TALLAS[np.random.randint(0, len(TALLAS))]
-        cantidad  = int(np.random.choice([1, 1, 1, 2, 2, 3]))
-        vendedor  = ASESORES[np.random.randint(0, len(ASESORES))]
-        fecha     = simular_fecha()
-        total     = producto["precio"] * cantidad
- 
-        ventas.append({
-            "id_venta":        i,
+
+    # Fecha de inicio para el simulador
+    fechaInicio = datetime(2025, 1, 2)
+
+    for _ in range(numeroVentas):
+        producto = random.choice(PRODUCTOS)
+        cantidad = random.randint(1, 5)
+        fecha    = fechaInicio + timedelta(days=random.randint(0, 60))
+
+        venta = {
             "producto":        producto["nombre"],
-            "precio_unitario": producto["precio"],
+            "precioUnitario":  producto["precio"],
             "descuento":       producto["descuento"],
-            "talla":           talla,
+            "talla":           random.choice(TALLAS),
             "cantidad":        cantidad,
-            "vendedor":        vendedor,
-            "fecha":           fecha,
-            "total":           total,
-        })
- 
+            "vendedor":        random.choice(ASESORES),
+            "fecha":           fecha.strftime("%Y-%m-%d"),
+            "total":           cantidad * producto["precio"],
+        }
+
+        # ── INYECCIÓN DE ERRORES DE CALIDAD ───────────────────────────────
+        probabilidadError = random.random()
+
+        if probabilidadError < 0.15:
+            venta["producto"] = " " + venta["producto"] + " "
+
+        elif probabilidadError < 0.30:
+            venta["vendedor"] = venta["vendedor"].upper()
+
+        elif probabilidadError < 0.40:
+            venta["talla"] = "medio"
+
+        elif probabilidadError < 0.50:
+            venta["cantidad"] = random.choice([0, -1, None])
+
+        elif probabilidadError < 0.60:
+            venta["precioUnitario"] = None
+
+        elif probabilidadError < 0.70:
+            fecha_obj = datetime.strptime(venta["fecha"], "%Y-%m-%d")
+            venta["fecha"] = fecha_obj.strftime("%d/%m/%Y")
+
+        elif probabilidadError < 0.80:
+            venta["total"] = random.randint(1000, 5000)
+
+        elif probabilidadError < 0.90:
+            venta["producto"] = venta["producto"].lower()
+
+        ventas.append(venta)
+
+    # ── INYECCIÓN DE DUPLICADOS ────────────────────────────────────────────
+    cantidadDuplicados = int(len(ventas) * 0.20)
+    duplicados = random.sample(ventas, cantidadDuplicados)
+    ventas.extend(duplicados)
+
     return ventas

@@ -1,0 +1,86 @@
+{
+  "resumen": {
+    "totalEmpleados": 8,
+    "salarioPromedio": 2275000.0,
+    "salarioMinimo": 1800000,
+    "salarioMaximo": 2800000
+  },
+  "porTurno": [],
+  "topSalarios": [
+    {
+      "nombre": "Laura",
+      "apellido": "Gómez",
+      "salario_base": 2800000
+    },
+    {
+      "nombre": "Miguel",
+      "apellido": "Torres",
+      "salario_base": 2800000
+    },
+    {
+      "nombre": "Andrés",
+      "apellido": "Parra",
+      "salario_base": 2800000
+    },
+    {
+      "nombre": "Sofía",
+      "apellido": "Vélez",
+      "salario_base": 2000000
+    },
+    {
+      "nombre": "Carlos",
+      "apellido": "Mesa",
+      "salario_base": 2000000
+    }
+  ],
+  "antiguedad": [
+    {
+      "nombre": "Valentina",
+      "apellido": "Ríos",
+      "fecha_ingreso": "2020-11-24 00:00:00",
+      "antiguedad_años": 5.4
+    },
+    {
+      "nombre": "Laura",
+      "apellido": "Gómez",
+      "fecha_ingreso": "2021-01-01 00:00:00",
+      "antiguedad_años": 5.3
+    },
+    {
+      "nombre": "Sofía",
+      "apellido": "Vélez",
+      "fecha_ingreso": "2021-02-13 00:00:00",
+      "antiguedad_años": 5.2
+    },
+    {
+      "nombre": "Carlos",
+      "apellido": "Mesa",
+      "fecha_ingreso": "2021-09-26 00:00:00",
+      "antiguedad_años": 4.6
+    },
+    {
+      "nombre": "Andrés",
+      "apellido": "Parra",
+      "fecha_ingreso": "2023-02-23 00:00:00",
+      "antiguedad_años": 3.2
+    },
+    {
+      "nombre": "Miguel",
+      "apellido": "Torres",
+      "fecha_ingreso": "2023-05-08 00:00:00",
+      "antiguedad_años": 3.0
+    },
+    {
+      "nombre": "Valentina",
+      "apellido": "Ríos",
+      "fecha_ingreso": "2024-03-09 00:00:00",
+      "antiguedad_años": 2.1
+    },
+    {
+      "nombre": "Miguel",
+      "apellido": "Torres",
+      "fecha_ingreso": "2024-08-28 00:00:00",
+      "antiguedad_años": 1.7
+    }
+  ]
+}

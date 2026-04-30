@@ -1,0 +1,152 @@
+{
+  "kpis": {
+    "totalVentas": 466132000,
+    "totalTransacc": 1201,
+    "ticketPromedio": 388119.9,
+    "unidadesVendidas": 3497,
+    "mejorAsesor": "Andrés Parra",
+    "productoEstrella": "Cinturón Formal"
+  },
+  "graficaDia": [
+    {
+      "dia": "Sunday",
+      "total_ventas": 79679100.0
+    },
+    {
+      "dia": "Thursday",
+      "total_ventas": 76069700.0
+    },
+    {
+      "dia": "Friday",
+      "total_ventas": 72219600.0
+    },
+    {
+      "dia": "Saturday",
+      "total_ventas": 66436700.0
+    },
+    {
+      "dia": "Wednesday",
+      "total_ventas": 64604400.0
+    },
+    {
+      "dia": "Monday",
+      "total_ventas": 58144700.0
+    },
+    {
+      "dia": "Tuesday",
+      "total_ventas": 48977800.0
+    }
+  ],
+  "graficaMes": [
+    {
+      "mes": 1,
+      "total_ventas": 234058400.0
+    },
+    {
+      "mes": 2,
+      "total_ventas": 212926200.0
+    },
+    {
+      "mes": 3,
+      "total_ventas": 19147400.0
+    }
+  ],
+  "rankingAsesores": [
+    {
+      "vendedor": "Andrés Parra",
+      "num_ventas": 212,
+      "total_ventas": 85511100.0,
+      "pct": 100.0
+    },
+    {
+      "vendedor": "Valentina Ríos",
+      "num_ventas": 211,
+      "total_ventas": 83169900.0,
+      "pct": 97.3
+    },
+    {
+      "vendedor": "Laura Gómez",
+      "num_ventas": 199,
+      "total_ventas": 77239900.0,
+      "pct": 90.3
+    },
+    {
+      "vendedor": "Carlos Mesa",
+      "num_ventas": 203,
+      "total_ventas": 76439600.0,
+      "pct": 89.4
+    },
+    {
+      "vendedor": "Miguel Torres",
+      "num_ventas": 192,
+      "total_ventas": 75523400.0,
+      "pct": 88.3
+    },
+    {
+      "vendedor": "Sofía Vélez",
+      "num_ventas": 184,
+      "total_ventas": 68248100.0,
+      "pct": 79.8
+    }
+  ],
+  "topProductos": [
+    {
+      "producto": "Vestido Quinceañera",
+      "unidades": 201.0,
+      "ingresos": 64320000.0
+    },
+    {
+      "producto": "Traje Elegante Niño",
+      "unidades": 244.0,
+      "ingresos": 46335600.0
+    },
+    {
+      "producto": "Vestido De Ceremonia",
+      "unidades": 208.0,
+      "ingresos": 44720000.0
+    },
+    {
+      "producto": "Vestido Cóctel Niña",
+      "unidades": 217.0,
+      "ingresos": 39060000.0
+    },
+    {
+      "producto": "Blazer Niño",
+      "unidades": 266.0,
+      "ingresos": 35910000.0
+    }
+  ],
+  "ventasPorTalla": [
+    {
+      "talla": "XL",
+      "cantidad": 649.0
+    },
+    {
+      "talla": "M",
+      "cantidad": 621.0
+    },
+    {
+      "talla": "L",
+      "cantidad": 585.0
+    },
+    {
+      "talla": "XXXL",
+      "cantidad": 576.0
+    },
+    {
+      "talla": "S",
+      "cantidad": 542.0
+    },
+    {
+      "talla": "XS",
+      "cantidad": 524.0
+    }
+  ],
+  "resumen": {
+    "fecha_inicio": "2025-01-02",
+    "fecha_fin": "2025-03-03",
+    "asesores_activos": 6,
+    "productos_distintos": 16,
+    "mes_mayor_venta": 1
+  }
+}
